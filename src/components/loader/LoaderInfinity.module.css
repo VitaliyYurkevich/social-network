@@ -1,0 +1,32 @@
+.body {
+    /*line-height: 100vh;*/
+    /* text-align: center;*/
+    /*background: radial-gradient(#222, black);*/
+}
+.svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.path {
+    stroke: #030303;
+    stroke-width: 10;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-dasharray: 193.904983521;
+    fill: none;
+    animation:
+            load 4s linear infinite,
+            color 3s linear infinite;
+}
+
+@keyframes load {
+    from { stroke-dashoffset: 775.6199340820312; }
+}
+
+@keyframes color {
+    22% { stroke: #2fff00; }
+    44% { stroke: #ce1919; }
+    66% { stroke: #00bcd5; }
+    88% { stroke: #fcd000; }
+}
