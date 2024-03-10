@@ -52,9 +52,7 @@ export const followAPI = {
 
 export const authAPI = {
     authMe() {
-        return instance.get(`auth/me`, {
-            withCredentials: true
-        })
+        return instance.get(`auth/me`)
             .then(response => {
                 return response.data
             })
