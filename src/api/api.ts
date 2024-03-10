@@ -15,14 +15,6 @@ export const usersAPI = {
             .then(response => {
                 return response.data
             })
-    },
-    onPageChanged1(currentNumber: number, pageSize: number) {
-        return instance.get(`users?page=${currentNumber}&count=${pageSize}`, {
-            withCredentials: true
-        })
-            .then(response => {
-                return response.data
-            })
     }
 }
 
