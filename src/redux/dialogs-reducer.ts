@@ -5,25 +5,20 @@ const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
 
 type sendMessageType = {
     type: 'SEND_MESSAGE'
+    newMessageBody: string
 }
 
-type updateNewMessageBodyType = {
-    type: 'UPDATE_NEW_MESSAGE_BODY'
-    newTextMessage: string
-}
 
-type ActionType = sendMessageType | updateNewMessageBodyType
+type ActionType = sendMessageType
 
 export type InitialStateDialogsType = {
     messages: Array<MessagesPropsType>
     dialogs: Array<DialogsStatePropsType>
-    newMessageBody: string
 }
 
 const initialState: InitialStateDialogsType = {
     messages: [],
     dialogs: [],
-    newMessageBody: ''
 }
 
 /*const initialState = {
@@ -53,18 +48,9 @@ export const dialogsReducer = (state: DialogsPagePropsType = initialState, actio
     switch (action.type) {
 
         case SEND_MESSAGE: {
-            let body = state.newMessageBody
             let stateCopy = {
                 ...state,
-                newMessageBody: '',
-                messages: [...state.messages, {id: 11, message: body}]
-            }
-            return stateCopy
-        }
-        case UPDATE_NEW_MESSAGE_BODY: {
-            let stateCopy = {
-                ...state,
-                newMessageBody: action.newTextMessage
+                messages: [...state.messages, {id: 11, message: action.newMessageBody}]
             }
             return stateCopy
         }
@@ -73,11 +59,8 @@ export const dialogsReducer = (state: DialogsPagePropsType = initialState, actio
     return state
 }
 
-export const sendMessageAC = () => ({
+export const sendMessageAC = (newMessageBody: string) => ({
+    newMessageBody: newMessageBody,
     type: SEND_MESSAGE
 })
 
-export const updateNewMessageBodyAC = (newTextMessage: string) => ({
-    type: UPDATE_NEW_MESSAGE_BODY,
-    newTextMessage: newTextMessage
-})
