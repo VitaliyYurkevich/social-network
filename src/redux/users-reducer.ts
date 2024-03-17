@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {usersAPI} from "../api/api";
+import {followAPI, usersAPI} from "../api/api";
 
 type setUsersType = {
     type: 'SET_USERS'
@@ -167,17 +167,38 @@ export const toggleIsFollowingProgressAC = (id: number, isFetch: boolean) => ({
 } as const)
 
 
-export const getUsersTC = (currentPage: number,pageSize: number ) => {
+export const getUsersTC = (currentPage: number, pageSize: number) => {
    return (dispatch: Dispatch) => {
         dispatch(toggleIsFetchingAC(true))
         usersAPI.getUsers(currentPage, pageSize).then(data => {
-
             dispatch(toggleIsFetchingAC(false))
             dispatch(setUsersAC(data.items))
             dispatch(setTotalUserCountAC(data.totalCount))
         })
     }
-
-
-
 }
+
+export const followTC = (userId: number) => {
+    return (dispatch: Dispatch) => {
+       dispatch(toggleIsFollowingProgressAC(userId, true))
+        followAPI.postFollow(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followAC(userId))
+            }
+            dispatch(toggleIsFollowingProgressAC(userId, false))
+        })
+    }
+}
+
+export const unFollowTC = (userId: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(toggleIsFollowingProgressAC(userId, true))
+        followAPI.deleteFollow(userId).then(data => {
+            if (data.resultCode === 0) {
+               dispatch(unFollowAC(userId))
+            }
+            dispatch(toggleIsFollowingProgressAC(userId, false))
+        })
+    }
+}
+

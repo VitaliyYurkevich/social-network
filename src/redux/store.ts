@@ -68,8 +68,6 @@ export type ProfilePagePropsType = {
 export type DialogsPagePropsType = {
     messages: Array<MessagesPropsType>
     dialogs: Array<DialogsStatePropsType>
-    newMessageBody: string
-
 }
 
 

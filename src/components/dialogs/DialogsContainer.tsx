@@ -9,7 +9,7 @@ import {compose} from "redux";
 
 type MapStatePropsType = {
     dialogsPage: InitialStateDialogsType
-    isAuth: boolean
+    isAuth: boolean | null
 }
 
 type MapDispatchPropsType = {

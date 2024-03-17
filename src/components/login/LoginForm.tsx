@@ -1,12 +1,15 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Input} from "../commons/formControls/FormsControls";
+import {required} from "../utils/validators/validators";
+import classes from "../commons/formControls/FormsControls.module.css"
 
 
 //типо как MapStateToProps
 
 
 export type FormDataType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
 }
@@ -18,13 +21,17 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder={"login"} component={'input'} name={"login"}/>
+                    <Field validate={[required]} placeholder={"email"} component={Input} name={"email"}/>
                 </div>
                 <div>
-                    <Field placeholder={"password"} component={'input'} name={"password"}/>
+                    <Field validate={[required]} placeholder={"password"} component={Input} name={"password"}
+                           type={'password'}/>
                 </div>
                 <div>
-                    <Field type={'checkbox'} component={'input'} name={"rememberMe"}/> remember me
+                    <Field type={'checkbox'} component={Input} name={"rememberMe"}/> remember me
+                </div>
+                <div>
+                    {props.error && <div className={classes.formSummaryError}>{props.error}</div>}
                 </div>
                 <div>
                     <button>Login</button>
@@ -36,5 +43,5 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 export const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
-}) (LoginForm)
+})(LoginForm)
 
