@@ -13,15 +13,21 @@ import Login from "./components/login/Login";
 import {connect} from "react-redux";
 import {getAuthUserTC} from "./redux/auth-reducer";
 import {compose} from "redux";
+import {initializeAppTC} from "./redux/app-reducer";
+import {AppStateType} from "./redux/redux-store";
+import {LoaderInfinity} from "./components/loader/LoaderInfinity";
 
 
-export class App extends React.Component<AppStateType> {
+export class App extends React.Component<AppStateLocalType> {
 
     componentDidMount() {
-        this.props.setAuthUserTC()
+        this.props.initializeAppTC()
     }
 
     render() {
+        if(!this.props.initialized){
+            return <LoaderInfinity/>
+        }
         return (
             <BrowserRouter>
                 <div className="app-wrapper">
@@ -42,22 +48,24 @@ export class App extends React.Component<AppStateType> {
     }
 }
 
-type AppStateType = MapDispatchPropsType & MapStateToProps
+type AppStateLocalType = MapDispatchPropsType & MapStatePropsType
 
 type MapDispatchPropsType = {
-    setAuthUserTC: () => void
+    initializeAppTC: () => void
 }
 
-type MapStateToProps = {
-
+type MapStatePropsType = {
+    initialized: boolean
 }
 
-const MapStateToProps = () => {
-
+const MapStateToProps = (state: AppStateType): MapStatePropsType => {
+    return {
+        initialized: state.app.initialized
+    }
 }
 
 export default compose<React.ComponentType>(
     withRouter,
     connect(MapStateToProps, {
-        setAuthUserTC: getAuthUserTC
+        initializeAppTC
     }))(App)
