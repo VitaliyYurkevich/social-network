@@ -6,6 +6,7 @@ import {DialogsPropsType} from "./DialogsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../commons/formControls/FormsControls";
 import {maxLengthCreator, required} from "../utils/validators/validators";
+import {Button} from "@mui/material";
 
 export const Dialogs = (props: DialogsPropsType) => {
 
@@ -31,7 +32,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                     )
                 })}
             </div>
-            <div>
+            <div style={{marginTop: 300, marginLeft: 300}}>
                 <AddMessageReduxForm onSubmit={addNewMessage}/>
             </div>
         </div>
@@ -57,7 +58,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = (props)
             />
             </div>
             <div>
-                <button>Send message</button>
+                <Button type={'submit'} color={'secondary'} variant="contained" >Send message</Button>
             </div>
         </form>
     )

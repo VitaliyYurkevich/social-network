@@ -12,7 +12,9 @@ export let rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
+                <div className={'app-background'}>
                 <App />
+                </div>
             </Provider>
         </BrowserRouter>, document.getElementById('root')
     );

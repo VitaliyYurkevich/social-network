@@ -22,6 +22,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
     return {
         dialogsPage: state.dialogsPage,
+        // @ts-ignore
         isAuth: state.auth.isAuth
     }
 }

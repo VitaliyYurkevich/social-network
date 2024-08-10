@@ -5,13 +5,19 @@ import {MyPostsPropsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import {Textarea} from "../../commons/formControls/FormsControls";
+import {Button, TextField} from "@mui/material";
 
 
-export const MyPosts = (props: MyPostsPropsType) => {
+export const MyPosts = React.memo((props: MyPostsPropsType) => {
 
     const postsElements = props.profilePage.posts.map((p, index) => {
         return (
-            <Post key={index} message={p.message} likeCount={p.likeCount}/>
+            <div>
+                <Post key={index} message={p.message} likeCount={p.likeCount}/>
+                <Button color={'secondary'} variant="contained" onClick={()=> props.deletePostAC(p.id)}>DELETE</Button>
+            </div>
+
+
         )
     })
 
@@ -30,7 +36,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
             </div>
         </div>
     );
-};
+});
 
 export type FormDataType = {
     post: string
@@ -43,14 +49,16 @@ export const addPostForm: React.FC<InjectedFormProps<FormDataType>> = (props) =>
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name={'post'}
+                <TextField
+                    color={'secondary'}
                        placeholder={'Enter your text'}
-                       component={Textarea}
-                       validate={[required, maxLength10]}
+                      label={'My post'}
+                       variant="standard"
+
                 />
             </div>
             <div>
-                <button>Add post</button>
+                <Button type={"submit"} color={'secondary'} variant="contained">Add post</Button>
             </div>
         </form>
     )

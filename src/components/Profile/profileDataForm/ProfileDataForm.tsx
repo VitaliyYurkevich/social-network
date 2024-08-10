@@ -3,13 +3,15 @@ import {Input, Textarea} from "../../commons/formControls/FormsControls";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {UserProfilePropsType} from "../../../redux/profile-reducer";
 import classes from "../profileInfo/ProfileInfo.module.css";
+import {Button} from "@mui/material";
 
 export const ProfileDataForm: React.FC<InjectedFormProps<FormDataProfileType>> = (props) => {
 
 
+
     return (
         <form onSubmit={props.handleSubmit}>
-            <div><button>save</button></div>
+            <div><Button variant="contained">save</Button></div>
             <div>
                 {props.error && <div className={classes.formSummaryError}>{props.error}</div>}
             </div>

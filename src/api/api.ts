@@ -1,4 +1,6 @@
 import axios from "axios";
+import {FormDataProfileType} from "../components/Profile/profileDataForm/ProfileDataForm";
+import {UserProfilePropsType} from "../redux/profile-reducer";
 
 
 const instance = axios.create({
@@ -33,6 +35,29 @@ export const profileAPI = {
     updateStatus(status: string) {
 
         return instance.put(`profile/status`, {status: status})
+            .then(response => {
+                return  response.data
+            })
+    },
+    savePhoto(file: File) {
+
+        let formData = new FormData()
+        formData.append("image", file)
+        return instance.put('profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(response => {
+                return response.data
+            })
+    },
+    saveProfile(profile: UserProfilePropsType) {
+        let fullName = profile.fullName
+        let aboutMe = profile.aboutMe
+        let lookingForAJob = profile.lookingForAJob
+        let lookingForAJobDescription = profile.lookingForAJobDescription
+        return instance.put(`profile/`, {...profile, fullName, aboutMe, lookingForAJob, lookingForAJobDescription})
             .then(response => {
                 return  response.data
             })
@@ -75,4 +100,13 @@ export const authAPI = {
     }
 }
 
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get('security/get-captcha-url')
+            .then(response => {
+                debugger
+                return response.data
+            })
+    }
+}
 

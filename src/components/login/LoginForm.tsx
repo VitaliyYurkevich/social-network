@@ -12,14 +12,18 @@ export type FormDataType = {
     email: string
     password: string
     rememberMe: boolean
+    captchaUrl: string
+
 }
 
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
+
     return (
         <div>
             <form onSubmit={props.handleSubmit}>
+                vitaliy.yurkevich@yandex.ru
                 <div>
                     <Field validate={[required]} placeholder={"email"} component={Input} name={"email"}/>
                 </div>
@@ -33,6 +37,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 <div>
                     {props.error && <div className={classes.formSummaryError}>{props.error}</div>}
                 </div>
+               {/* {props.  && <img src={props.active} />}*/}
                 <div>
                     <button>Login</button>
                 </div>

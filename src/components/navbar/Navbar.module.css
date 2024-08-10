@@ -1,15 +1,26 @@
 .nav {
-    grid-area: n;
-    background-color: #0077ff;
-    padding: 20px;
+
 }
+
 
 .item a {
     color: #ffffff;
     text-decoration: none;
+    font-size: 34px;
+    display: block;
+    border-radius: 10px;
+
+}
+.item a:hover {
+    color: #2fff00;
+    text-shadow: #2fff00 1px 0 10px;
+transition: .2s ease-in-out;
 }
 
+.active {
 
-.item a.active {
-    color: #fccf00;
+}
+
+.item a.active  {
+
 }

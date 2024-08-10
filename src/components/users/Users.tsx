@@ -3,6 +3,8 @@ import classes from "./Users.module.css";
 import userPhoto from "../../assets/images/user.webp";
 import {UserType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
+import Paginator from "../commons/paginator/Paginator";
+import {Button} from "@mui/material";
 
 
 type UsersComponentPropsType = {
@@ -19,29 +21,13 @@ type UsersComponentPropsType = {
 
 const Users = (props: UsersComponentPropsType) => {
 
-    const pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
-
-    const pages = []
-    for (let i = 0; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-
 
     return (
-        <div>
-            <div>
-                {pages.map(p => {
-                    return <span
-                        className={props.currentPage === p ? classes.selectedPage : ''}
-                        onClick={() => props.onPageChanged(p)}>{p}</span>
-                })}
-            </div>
+        <div style={{marginLeft: 300, marginTop: 100}}>
             {
                 props.users.map((u, index) => {
-
-
                     return (
-                        <div key={index}>
+                        <div className={classes.userArray} key={index}>
                             <span key={index}>
                                 <div>
                                     <NavLink to={`/profile/${u.id}`}>
@@ -51,13 +37,16 @@ const Users = (props: UsersComponentPropsType) => {
                                 </div>
                                 <div>
                                     {
-                                        u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                                props.unFollowTC(u.id)
-                                            }}>UnFollow</button>
+                                        u.followed ?
+                                            <Button color={'error'} variant="contained" disabled={props.followingInProgress.some(id => id === u.id)}
+                                                    onClick={() => {
+                                                        props.unFollowTC(u.id)
+                                                    }}>UnFollow</Button>
                                             :
-                                            <button  onClick={() => {
+                                            <Button color={'secondary'} variant="contained" onClick={() => {
                                                 props.followTC(u.id)
-                                            }} disabled={props.followingInProgress.some(id => id === u.id)}>Follow</button>}
+                                            }}
+                                                    disabled={props.followingInProgress.some(id => id === u.id)}>Follow</Button>}
                                 </div>
                             </span>
                             <span>
@@ -70,9 +59,10 @@ const Users = (props: UsersComponentPropsType) => {
                             </span>
                         </div>
                     )
-
                 })
             }
+            <Paginator portionSize={10} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}
+                       totalUserCount={props.totalUserCount}/>
         </div>
     );
 };

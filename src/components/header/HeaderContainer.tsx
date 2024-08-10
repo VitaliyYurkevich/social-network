@@ -7,7 +7,6 @@ import {AuthPropsType, getAuthUserTC, logoutTC} from "../../redux/auth-reducer";
 class HeaderContainer extends React.Component<HeaderPropsType> {
 
     componentDidMount() {
-        debugger
        this.props.setAuthUserTC()
     }
 

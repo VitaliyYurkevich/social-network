@@ -12,10 +12,6 @@ export const ProfileStatus = (props: ProfileStatusPropsType) => {
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.profileStatus)
 
-    useEffect(()=>{
-        setStatus(props.profileStatus)
-
-    }, [props.profileStatus])
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
@@ -31,6 +27,9 @@ export const ProfileStatus = (props: ProfileStatusPropsType) => {
     }
 
 
+    useEffect(()=>{
+        setStatus(props.profileStatus)
+    }, [props.profileStatus])
 
     return (
         <div>
@@ -38,7 +37,7 @@ export const ProfileStatus = (props: ProfileStatusPropsType) => {
                 <input onChange={onChangeHandler} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
             </div>}
             {!editMode && <div className={classes.div}>
-                <span onClick={activateEditMode}>{props.profileStatus || "------"}</span>
+              status:  <span onClick={activateEditMode}>{props.profileStatus || "------"}</span>
             </div>}
         </div>
 
