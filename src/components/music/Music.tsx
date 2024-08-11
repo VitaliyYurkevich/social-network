@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
-import musicImg from "../../assets/images/Turbotext AI Image 2894373 (1).png"
+import musicImg from "../../assets/images/musicIcon2.png"
 
 const Music = () => {
     return (
         <StyledDiv>
            <StyledImg src={musicImg} />
-
-
         </StyledDiv>
     );
 };

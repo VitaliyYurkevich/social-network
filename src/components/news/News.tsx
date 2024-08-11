@@ -1,7 +1,7 @@
 import React from 'react';
 import {LoaderInfinity} from "../loader/LoaderInfinity";
 import styled from "styled-components";
-import imgPapers from "../../assets/images/cosmoPapers.png"
+import imgPapers from "../../assets/images/newsIcon2.png"
 const News = () => {
 
     return (

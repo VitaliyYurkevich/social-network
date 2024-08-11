@@ -1,13 +1,15 @@
 .header {
     grid-area: h;
-    background: linear-gradient(90deg, rgba(9,121,56,1) 25%, rgba(104,255,0,1) 50%, rgba(9,121,56,1) 75%);
+    background: linear-gradient(90deg, rgba(12, 226, 255, 0.7) 25%, rgba(1, 175, 199, 0.7) 50%, rgb(5, 185, 185) 75%);
     outline: 3px solid rgba(14,45,27,1);
+
     border-radius: 20px;
+
     /*background-image:  url("https://camo-v3.shikimori.one/2319d76bc83bc1194376967b9e9654db11704dae?url=https%3A%2F%2Fdybr.ru%2Fimg%2Fp%2F85470%2F1620051313_Ultramarines_Formation.png");*/
 }
 
 .header img{
-   padding-left: 20px;
+
 
 }
 

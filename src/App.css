@@ -17,7 +17,7 @@
 
 .app-wrapper-content {
     grid-area: c;
-    background-color: #187210;
+    background: linear-gradient(90deg, rgba(12, 226, 255, 0.85) 25%, rgba(1, 175, 199, 0.85) 50%, rgb(5, 185, 185, 0.85) 75%);
     outline: 3px solid rgba(14,45,27,1);
     border-radius: 20px;
     margin-top: 10px;
