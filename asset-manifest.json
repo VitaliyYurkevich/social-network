@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/social-network/static/css/main.c39880f9.css",
+    "main.js": "/social-network/static/js/main.37049e6b.js",
+    "static/css/659.2591aeba.chunk.css": "/social-network/static/css/659.2591aeba.chunk.css",
+    "static/js/659.2cf09685.chunk.js": "/social-network/static/js/659.2cf09685.chunk.js",
+    "static/css/987.e2c639b0.chunk.css": "/social-network/static/css/987.e2c639b0.chunk.css",
+    "static/js/987.800357ea.chunk.js": "/social-network/static/js/987.800357ea.chunk.js",
+    "static/js/599.310e8e73.chunk.js": "/social-network/static/js/599.310e8e73.chunk.js",
+    "static/media/logoIcon2.png": "/social-network/static/media/logoIcon2.129ad62ace82e85cf192.png",
+    "static/media/user.webp": "/social-network/static/media/user.8d8706e619da183d652b.webp",
+    "static/media/settingsIcon.png": "/social-network/static/media/settingsIcon.1bd0d71e182b6658ce86.png",
+    "static/media/newsIcon2.png": "/social-network/static/media/newsIcon2.ce3a803033acfca8af67.png",
+    "static/media/musicIcon2.png": "/social-network/static/media/musicIcon2.c9f646a1d1b7d1c1d8b7.png",
+    "index.html": "/social-network/index.html",
+    "main.c39880f9.css.map": "/social-network/static/css/main.c39880f9.css.map",
+    "main.37049e6b.js.map": "/social-network/static/js/main.37049e6b.js.map",
+    "659.2591aeba.chunk.css.map": "/social-network/static/css/659.2591aeba.chunk.css.map",
+    "659.2cf09685.chunk.js.map": "/social-network/static/js/659.2cf09685.chunk.js.map",
+    "987.e2c639b0.chunk.css.map": "/social-network/static/css/987.e2c639b0.chunk.css.map",
+    "987.800357ea.chunk.js.map": "/social-network/static/js/987.800357ea.chunk.js.map",
+    "599.310e8e73.chunk.js.map": "/social-network/static/js/599.310e8e73.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c39880f9.css",
+    "static/js/main.37049e6b.js"
+  ]
+}
