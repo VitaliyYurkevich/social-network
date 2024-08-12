@@ -2,7 +2,7 @@
   "name": "samurai-way",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vitaliyyurkevich.github.io/social-network",
+  "homepage": "https://vitaliyyurkevich.github.io/social-network/",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
