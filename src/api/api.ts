@@ -81,10 +81,10 @@ export const followAPI = {
 
 export const authAPI = {
     authMe() {
-       /* return instance.get(`auth/me`)
+        return instance.get(`auth/me`)
             .then(response => {
-                return /!*response.data*!/ true
-            })*/
+                return response.data
+            })
     },
     authLogin(email: string, password: string, rememberMe = false ) {
         return instance.post(`auth/login`, {email, password, rememberMe})

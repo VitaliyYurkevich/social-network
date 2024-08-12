@@ -44,12 +44,6 @@ class UserAPIComponent extends React.Component<UsersPropsType> {
 
 
     onPageChanged = (currentPage: number) => {
-       /* this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(currentNumber)
-        usersAPI.onPageChanged1(currentNumber, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        })*/
         this.props.setCurrentPage(currentPage)
         this.props.getUsersTC(currentPage, this.props.pageSize)
     }

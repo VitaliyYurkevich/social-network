@@ -4,7 +4,8 @@ import userPhoto from "../../assets/images/user.webp";
 import {UserType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import Paginator from "../commons/paginator/Paginator";
-import {Button} from "@mui/material";
+import {Button, Pagination} from "@mui/material";
+import styled from "styled-components";
 
 
 type UsersComponentPropsType = {
@@ -23,11 +24,12 @@ const Users = (props: UsersComponentPropsType) => {
 
 
     return (
-        <div style={{marginLeft: 300, marginTop: 100}}>
-            {
-                props.users.map((u, index) => {
-                    return (
-                        <div className={classes.userArray} key={index}>
+        <div style={{marginLeft: 270, marginTop: 100}}>
+            <div>
+                {
+                    props.users.map((u, index) => {
+                        return (
+                            <div className={classes.userArray} key={index}>
                             <span key={index}>
                                 <div>
                                     <NavLink to={`/profile/${u.id}`}>
@@ -49,7 +51,7 @@ const Users = (props: UsersComponentPropsType) => {
                                                     disabled={props.followingInProgress.some(id => id === u.id)}>Follow</Button>}
                                 </div>
                             </span>
-                            <span>
+                                <span>
                                 <span>
                                     <div>{u.name}</div><div>{u.status}</div>
                                 </span>
@@ -57,14 +59,24 @@ const Users = (props: UsersComponentPropsType) => {
                                     <div>{'u.location.country'}</div><div>{'u.location.city'}</div>
                                 </span>
                             </span>
-                        </div>
-                    )
-                })
-            }
-            <Paginator portionSize={10} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}
-                       totalUserCount={props.totalUserCount}/>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+                <StyledPaginator portionSize={10} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}
+                           totalUserCount={props.totalUserCount}/>
+
         </div>
+
     );
 };
+
+
+const StyledPaginator = styled(Paginator)`
+   
+
+`
 
 export default Users;

@@ -74,11 +74,11 @@ export const getCaptchaUrlSuccess = (url: string) => ({
 })
 
 export const getAuthUserTC = () => async (dispatch: Dispatch) => {
-    //let response = await authAPI.authMe()
-    /*if (response.resultCode === 0) {
+    let response = await authAPI.authMe()
+    if (response.resultCode === 0) {
         let {id, email, login} = response.data
         dispatch(setAuthUserData(id, email, login, true))
-    }*/
+    }
 }
 
 export const loginTC = (email: string, password: string, rememberMe: boolean) => async (dispatch: any) => {

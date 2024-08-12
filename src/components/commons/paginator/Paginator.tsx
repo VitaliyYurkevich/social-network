@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import classes from "./Paginator.module.css";
-import {Button} from "@mui/material";
+import {Button, Pagination, PaginationItem} from "@mui/material";
+import {usersAPI} from "../../../api/api";
 
 type PaginatorPropsType = {
     totalUserCount: number
@@ -10,26 +11,32 @@ type PaginatorPropsType = {
     portionSize: number
 }
 
+
 const Paginator = (props: PaginatorPropsType) => {
 
     const pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
+    //const portionCount = Math.ceil(pagesCount / props.portionSize)
+    //const pages = []
+    //for (let i = 0; i <= pagesCount; i++) {
+    //    pages.push(i)
+    //}
+    //const [portionNumber, setPortionNumber] = useState(1)
+    //const leftPortionPageNumber = (portionNumber - 1) * props.portionSize + 1
+    //const rightPortionPageNumber = portionNumber * props.portionSize
 
-    const pages = []
-
-    for (let i = 0; i <= pagesCount; i++) {
-        pages.push(i)
+    const handlerClick = (page: number) => {
+        props.onPageChanged(page)
     }
-
-    const [portionNumber, setPortionNumber] = useState(1)
-
-    const portionCount = Math.ceil(pagesCount / props.portionSize)
-    const leftPortionPageNumber = (portionNumber - 1) * props.portionSize + 1
-    const rightPortionPageNumber = portionNumber * props.portionSize
 
 
     return (
-        <div>
-            { portionNumber > 1 &&
+        <div style={{marginTop: 20}}>
+            <Pagination count={pagesCount}
+                        page={props.currentPage}
+                        onChange={(_, num) => handlerClick(num)}
+
+            />
+            {/* { portionNumber > 1 &&
             <Button color={'inherit'} variant="contained" onClick={()=> {setPortionNumber(portionNumber - 1)}}>PREV</Button>
             }
             {pages
@@ -41,7 +48,7 @@ const Paginator = (props: PaginatorPropsType) => {
             })}
             { portionCount > portionNumber &&
                 <Button color={'inherit'} variant="contained" onClick={()=> {setPortionNumber(portionNumber + 1)}}>PREV</Button>
-            }
+            }*/}
         </div>
     );
 };
