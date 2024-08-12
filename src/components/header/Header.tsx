@@ -15,12 +15,14 @@ export const Header = (props: HeaderPropsType) => {
                     {props.isAuth
                         ? <div className={classes.userName}><div>{props.login}</div><div>
                             <StyledBtn onClick={props.logoutTC}>Log out</StyledBtn></div></div>
-                        : <NavLink to={'/login'}>Login</NavLink>
+                        : <NavLink to={'/login'}><StyledBtn>Login</StyledBtn></NavLink>
                     }
                 </div>
             </header>
     );
 };
+
+
 
 const StyledBtn = styled.button`
   height: 30px;
