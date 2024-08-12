@@ -6,7 +6,8 @@ import {UserProfilePropsType} from "../redux/profile-reducer";
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
-    headers: {"API-KEY": "482cc18a-19a0-4ab1-be65-64dee4acdd40"}
+    headers: {"API-KEY": "482cc18a-19a0-4ab1-be65-64dee4acdd40"},
+
 })
 
 export const usersAPI = {
