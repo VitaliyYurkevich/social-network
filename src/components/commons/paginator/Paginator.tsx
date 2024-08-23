@@ -2,6 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import classes from "./Paginator.module.css";
 import {Button, Pagination, PaginationItem} from "@mui/material";
 import {usersAPI} from "../../../api/api";
+import styled from "styled-components";
 
 type PaginatorPropsType = {
     totalUserCount: number
@@ -30,8 +31,8 @@ const Paginator = (props: PaginatorPropsType) => {
 
 
     return (
-        <div style={{marginTop: 20}}>
-            <Pagination count={pagesCount}
+        <StyledPaginator >
+            <Pagination color={"primary"} count={pagesCount}
                         page={props.currentPage}
                         onChange={(_, num) => handlerClick(num)}
 
@@ -49,8 +50,16 @@ const Paginator = (props: PaginatorPropsType) => {
             { portionCount > portionNumber &&
                 <Button color={'inherit'} variant="contained" onClick={()=> {setPortionNumber(portionNumber + 1)}}>PREV</Button>
             }*/}
-        </div>
+        </StyledPaginator>
     );
 };
+
+
+
+const StyledPaginator = styled.div`
+  background-color: var(--wrap-bg-color);
+   padding-left: 30%;
+  color: var(--b-w-text-color);
+`
 
 export default Paginator;

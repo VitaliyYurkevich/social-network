@@ -37,7 +37,7 @@ export const ProfileStatus = (props: ProfileStatusPropsType) => {
                 <input onChange={onChangeHandler} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
             </div>}
             {!editMode && <div className={classes.div}>
-              status:  <span onClick={activateEditMode}>{props.profileStatus || "------"}</span>
+              Status:  <span onClick={activateEditMode}>{props.profileStatus || "------"}</span>
             </div>}
         </div>
 

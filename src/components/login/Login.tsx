@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {getCaptchaUrlTC, loginTC, logoutTC} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Redirect} from "react-router-dom";
+import s from './style.module.css'
 
 type MapDispatchPropsType = {
     loginTC: (email: string, password: string, rememberMe: boolean) => void
@@ -39,11 +40,15 @@ type LoginPropsType = MapStateToPropsType & MapDispatchPropsType
     }
 
     return (
-        <div style={{marginLeft: 300, marginTop: 200}}>
-            <h1>Login</h1>
+        <div className={s.loginPage}>
+            <div className={s.loginWrap}>
+                <div className={s.login}>
+            <h2>Login</h2>
             {/*<button onClick={props.getCaptchaUrlTC}>GET CAPTCHA</button>
             <img src={props.captchaUrl}/>*/}
             <LoginReduxForm onSubmit={onSubmit} />
+                </div>
+            </div>
         </div>
     );
 };

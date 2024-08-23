@@ -6,6 +6,8 @@ import {ProfileStatus} from "../profileStatus/ProfileStatus";
 import userPhoto from "../../../assets/images/user.webp"
 import {ProfileReduxForm} from "../profileDataForm/ProfileDataForm";
 import {Button, Input, TextField} from "@mui/material";
+import {ContactsType} from "./alternative/altProfileInfo/ProfileDescription";
+
 
 
 type ProfileInfoPropsType = {
@@ -28,8 +30,8 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
         }
     }
 
-    const onSubmit = (profile: UserProfilePropsType) => {
-        props.saveProfileTC(profile)
+    const onSubmit = async (profile: UserProfilePropsType) => {
+       await props.saveProfileTC(profile)
         setEditMode(false)
     }
 
@@ -38,25 +40,33 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
     }
 
     return (
-        <div>
             <div className={classes.descriptionBlock}>
-                <img src={props.userProfile.photos.large || userPhoto} className={classes.mainPhoto}/>
-                <div>
-                    {props.isOwner && <TextField type={'file'} onChange={onMainPhotoSelected}/>}
+                <div >
+                    <span className={classes.styledSpan}>
+                        <img src={props.userProfile.photos.large || userPhoto} className={classes.mainPhoto}/>
+                         <ProfileStatus profileStatus={props.profileStatus} updateUserStatusTC={props.updateUserStatusTC}/>
+                    </span>
+
+
+
+                        {/*{props.isOwner && <TextField variant={"standard"} type={'file'} onChange={onMainPhotoSelected}/>}*/}
                 </div>
-                {editMode
-                    ? <ProfileReduxForm initialValues={props.userProfile} onSubmit={onSubmit}/>
-                    : <ProfileData goToEditMode={() => {
-                        setEditMode(props.isOwner)
-                    }} isOwner={props.isOwner} userProfile={props.userProfile}/>}
-                <ProfileStatus profileStatus={props.profileStatus} updateUserStatusTC={props.updateUserStatusTC}/>
+
+                    {editMode
+                        ? <ProfileReduxForm initialValues={props.userProfile} onSubmit={onSubmit}/>
+                        : <ProfileData goToEditMode={() => {
+                            setEditMode(props.isOwner)
+                        }} isOwner={props.isOwner} userProfile={props.userProfile}/>}
+
             </div>
-        </div>
     );
 };
 
-// @ts-ignore
-const Contact = ({contactTitle, contactValue}) => {
+type ContactPropsType = {
+    contactTitle: any,
+    contactValue: any
+}
+const Contact:React.FC<ContactPropsType> = ({contactTitle, contactValue}) => {
     return <div><b>{contactTitle}</b>: {contactValue}</div>
 }
 
@@ -69,31 +79,35 @@ type ProfileDataType = {
 
 const ProfileData = (props: ProfileDataType) => {
     return (
-        <div>
+        <div className={classes.mainInfo}>
+            <div>
+                <div className={classes.name}>
+                    <b>Full Name: </b>{props.userProfile.fullName}
+                </div>
+                <div className={classes.aboutMe}>
+                    <b>About me:</b> {props.userProfile.aboutMe ? props.userProfile.aboutMe : '-----'}
+                </div>
+                <div className={classes.LookForJob}>
+                    <b>Looking for a job: </b> {props.userProfile.lookingForAJob ? "Yes" : "No"}
+                </div>
+            </div>
+            <div>
+                <div>
+                    {props.userProfile.lookingForAJob &&
+                        <div>
+                            <b>My professional skills:</b> {props.userProfile.lookingForAJobDescription}</div>
+                    }
+                </div>
+                <div className={classes.contact}>
+                    <b>Contacts:</b> {Object.keys(props.userProfile.contacts).map(key => {
+
+                    return <Contact key={key} contactTitle={key} contactValue={props.userProfile.contacts[key as keyof ContactsType] || ''}/>
+                })}
+                </div>
+            </div>
             {props.isOwner && <div>
                 <Button color={'secondary'} variant="contained" onClick={props.goToEditMode}>edit</Button>
             </div>}
-            <div>
-                <b>Full Name: </b>{props.userProfile.fullName}
-            </div>
-            <div>
-                <b>About me:</b> {props.userProfile.aboutMe ? props.userProfile.aboutMe : '-----'}
-            </div>
-            <div>
-                <b>Looking for a job: </b> {props.userProfile.lookingForAJob ? "Yes" : "No"}
-            </div>
-            <div>
-                {props.userProfile.lookingForAJob &&
-                    <div>
-                        <b>My professional skills:</b> {props.userProfile.lookingForAJobDescription}</div>
-                }
-            </div>
-            <div className={classes.contact}>
-                <b>Contacts:</b> {Object.keys(props.userProfile.contacts).map(key => {
-                // @ts-ignore
-                return <Contact key={key} contactTitle={key} contactValue={props.userProfile.contacts[key]}/>
-            })}
-            </div>
         </div>
     )
 }

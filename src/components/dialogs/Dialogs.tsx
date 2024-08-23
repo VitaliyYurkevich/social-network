@@ -49,7 +49,7 @@ const maxLength50 = maxLengthCreator(50)
 export const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form style={{position: 'fixed'}} onSubmit={props.handleSubmit}>
             <div><Field
                 placeholder={'Enter your message'}
                 component={Textarea}

@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import classes from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
-import styled, {css} from "styled-components";
-import icon from "../../assets/images/Ankh_triarch.webp"
+import styled from "styled-components";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChatIcon from '@mui/icons-material/Chat';
 import GroupIcon from '@mui/icons-material/Group';

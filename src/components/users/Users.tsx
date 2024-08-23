@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import Paginator from "../commons/paginator/Paginator";
 import {Button, Pagination} from "@mui/material";
 import styled from "styled-components";
+import s from "./Users.module.css"
 
 
 type UsersComponentPropsType = {
@@ -24,23 +25,22 @@ const Users = (props: UsersComponentPropsType) => {
 
 
     return (
-        <div style={{marginLeft: 270, marginTop: 100}}>
-            <div>
+        <div className={s.users} /*style={{marginLeft: 270, marginTop: 100}}*/>
+            <div className={s.userContainer}>
                 {
                     props.users.map((u, index) => {
                         return (
-                            <div className={classes.userArray} key={index}>
+                            <div className={s.user} key={index}>
                             <span key={index}>
-                                <div>
                                     <NavLink to={`/profile/${u.id}`}>
-                                        <img className={classes.img}
+                                        <img className={s.photo}
                                              src={u.photos.small != null ? u.photos.small : userPhoto}/>
                                     </NavLink>
-                                </div>
-                                <div>
+                                <div className={s.fol}>
                                     {
                                         u.followed ?
-                                            <Button color={'error'} variant="contained" disabled={props.followingInProgress.some(id => id === u.id)}
+                                            <Button color={'error'} variant="contained"
+                                                    disabled={props.followingInProgress.some(id => id === u.id)}
                                                     onClick={() => {
                                                         props.unFollowTC(u.id)
                                                     }}>UnFollow</Button>
@@ -52,10 +52,10 @@ const Users = (props: UsersComponentPropsType) => {
                                 </div>
                             </span>
                                 <span>
-                                <span>
-                                    <div>{u.name}</div><div>{u.status}</div>
+                                <span className={s.descriptionUser}>
+                                    <div className={s.name}>{u.name}</div><div style={{maxWidth: 25}}>{u.status}</div>
                                 </span>
-                                <span>
+                                <span className={s.descriptionUser}>
                                     <div>{'u.location.country'}</div><div>{'u.location.city'}</div>
                                 </span>
                             </span>
@@ -65,8 +65,9 @@ const Users = (props: UsersComponentPropsType) => {
                 }
             </div>
 
-                <StyledPaginator portionSize={10} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}
-                           totalUserCount={props.totalUserCount}/>
+            <StyledPaginator portionSize={10} pageSize={props.pageSize} currentPage={props.currentPage}
+                             onPageChanged={props.onPageChanged}
+                             totalUserCount={props.totalUserCount}/>
 
         </div>
 
@@ -75,8 +76,8 @@ const Users = (props: UsersComponentPropsType) => {
 
 
 const StyledPaginator = styled(Paginator)`
-   
-
+  padding-top: 50px;
+  background-color: black;
 `
 
 export default Users;

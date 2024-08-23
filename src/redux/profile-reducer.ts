@@ -1,6 +1,5 @@
 import {Dispatch} from "redux";
 import {profileAPI} from "../api/api";
-import {FormDataProfileType} from "../components/Profile/profileDataForm/ProfileDataForm";
 import {stopSubmit} from "redux-form";
 
 
@@ -32,6 +31,11 @@ type savePhotoType = {
 type saveProfileType = {
     type: 'SAVE_PROFILE',
     profile: UserProfilePropsType
+}
+
+type refreshPostType = {
+    type: 'REFRESH_POSTS',
+    posts: Array<PostsPropsType>
 }
 
 export type PostsPropsType = {
@@ -67,7 +71,7 @@ const initialState = {
     posts: [],
     userProfile: {
         aboutMe: '',
-        userId: 2,
+        userId: Number(''),
         lookingForAJob: false,
         lookingForAJobDescription: '',
         fullName: '',
@@ -103,6 +107,7 @@ type ActionType =
     | deletePostType
     | savePhotoType
     | saveProfileType
+    | refreshPostType
 
 
 export const profileReducer = (state: InitialStateProfileType = initialState, action: ActionType) => {
@@ -118,6 +123,7 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
             return stateCopy
         }
         case "SET_USER_PROFILE": {
+debugger
             return {...state, userProfile: action.userProfile}
         }
         case "SET_USER_STATUS_PROFILE": {
@@ -128,6 +134,15 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
         }
         case "SAVE_PHOTO": {
             return {...state, userProfile: {...state.userProfile, photos: action.file}}
+        }
+        case 'REFRESH_POSTS': {
+            return {
+                ...state,
+                profile: {
+                    ...state.userProfile,
+                    posts: action.posts
+                }
+            }
         }
 
         default:
@@ -140,26 +155,29 @@ export const addPostAC = (newText: string) => ({
     type: 'ADD_POST'
 })
 
+export const refreshPostsActionCreator = (posts: PostsPropsType[]) => ({
+    type: 'profile/REFRESH_POSTS', posts
+} as const)
+
 export const setUserProfileAC = (userProfile: UserProfilePropsType) => ({
     type: 'SET_USER_PROFILE', userProfile: userProfile
-})
+} as const)
 export const setUserStatusProfileAC = (profileStatus: string) => ({
     type: 'SET_USER_STATUS_PROFILE', profileStatus: profileStatus
-})
+} as const)
 
 export const deletePostAC = (postId: number) => ({
     type: 'DELETE_POST',
     postId: postId
-})
+} as const)
 
 export const savePhotoAC = (file: File) => ({
     type: 'SAVE_PHOTO',
     file: file
-})
+} as const)
 
 
-
-export const getProfileTC = (userId: string) => async (dispatch: Dispatch) => {
+export const getProfileTC = (userId: number) => async (dispatch: Dispatch) => {
     const response = await profileAPI.getProfile(userId)
     dispatch(setUserProfileAC(response))
 }
@@ -186,15 +204,15 @@ export const savePhotoTC = (file: File) => async (dispatch: Dispatch) => {
 //добавить режим редакитрования для setEditMode
 
 export const saveProfileTC = (profile: UserProfilePropsType) => async (dispatch: any) => {
-    const userId = profile.userId.toString()
+    const userId = profile.userId
     const response = await profileAPI.saveProfile(profile)
 
     if (response.resultCode === 0) {
         dispatch(getProfileTC(userId))
-    } else  {
+    } else {
         let message = response.messages.length > 0 ? response.messages[0] : "Some error"
         dispatch(stopSubmit("profileEdit", {_error: message}))
-       // return Promise.reject(response.messages[0])
+        // return Promise.reject(response.messages[0])
     }
 }
 

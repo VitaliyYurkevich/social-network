@@ -61,7 +61,7 @@ type ActionType =
 
 const initialState: InitialStateUsersType = {
     users: [] as Array<UserType>,
-    pageSize: 5,
+    pageSize: 8,
     totalUserCount: 20,
     currentPage: 1,
     isFetching: false,

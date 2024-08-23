@@ -1,3 +1,9 @@
 .div {
-    background-color: #fccf00;
+  width: 150px;
+    max-width: 150px;
+    max-height: 250px;
+    padding: 10px;
+    margin-top: 30px;
+    color: var(--dark-blue-w-text-color);
+    font-size: 20px;
 }

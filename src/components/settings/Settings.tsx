@@ -1,14 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import settingImg from "../../assets/images/settingsIcon.png"
-const Settings = () => {
+import s from './style.module.css'
+import {useDispatch, useSelector} from "react-redux";
+import {toggleBlackTheme, toggleDynamicBackground} from "../../redux/settings";
+import cn from 'classnames'
+import {AppStateType} from "../../redux/redux-store";
+import {createTheme, Switch, ThemeProvider} from "@mui/material";
+
+
+
+
+const Settings: React.FC = () => {
+
+
+    const { isBlackThemeActivated, isDynamicBackgroundActivated } = useSelector((state: AppStateType) => state.settings)
+    const dispatch = useDispatch()
+
     return (
-        <StyledDiv>
-          <StyledImg src={settingImg} />
-        </StyledDiv>
-    );
-};
-const StyledDiv = styled.div`
+        <div className={s.settings}>
+            <div className={s.settingsItem}>
+                <span className={s.label}>Night theme</span>
+                <span
+                    onClick={() => dispatch(toggleBlackTheme(isBlackThemeActivated))}
+                    className={cn({ [s.switchOn]: isBlackThemeActivated }, s.button)}
+                />
+            </div>
+            <div className={s.settingsItem}>
+                <span className={s.label}>Dynamic background</span>
+                <span
+                    onClick={() => dispatch(toggleDynamicBackground(isDynamicBackgroundActivated))}
+                    className={cn({ [s.switchOn]: isDynamicBackgroundActivated }, s.button)}
+                />
+            </div>
+        </div>
+    )
+
+}
+/*const StyledDiv = styled.div`
   // background-color: #ce1919;
   width: 100%;
   height: 100%;
@@ -24,5 +53,5 @@ const StyledImg = styled.img`
   object-fit: cover;
   padding-left: 70px;
   padding-top: 30px;
-`
+`*/
 export default Settings;

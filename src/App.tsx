@@ -13,12 +13,21 @@ import {initializeAppTC} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import {LoaderInfinity} from "./components/loader/LoaderInfinity";
 import {Navbar} from "./components/navbar/Navbar";
+import NavbarAlternative from "./components/navbar/NavbarAlternative";
+import {ThemeProvider} from "@mui/material";
+import './styles/index.css'
+import {toggleBlackTheme, toggleDynamicBackground} from "./redux/settings";
+import { Particle} from "./components/commons/backGroundEffect/BackGroundEffect";
+
 
 
 const DialogsContainer = React.lazy(()=> import("./components/dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(()=> import("./components/Profile/ProfileContainer"))
 
 export class App extends React.Component<AppStateLocalType> {
+
+
+
 
     componentDidMount() {
         this.props.initializeAppTC()
@@ -31,32 +40,44 @@ export class App extends React.Component<AppStateLocalType> {
             alert(reject)
         })
     }
+    componentDidUpdate(prevProps: Readonly<AppStateLocalType>, prevState: Readonly<{}>, snapshot?: any) {
+         this.props.toggleBlackTheme(localStorage.getItem('black-theme') === 'light')
+        this.props.toggleDynamicBackground(localStorage.getItem('dynamic-bg') === 'false')
+    }
+
 
     render() {
         if(!this.props.initialized){
+            debugger
             return <LoaderInfinity/>
         }
 
         return (
-
-            <BrowserRouter>
-                <div className="app-wrapper" >
+            <>
+                {this.props.isDynamicBackgroundActivated && <Particle />}
+                <BrowserRouter>
+                    <div  >
                         <HeaderContainer/>
-                        <Navbar/>
-                        <div className={'app-wrapper-content'}>
-                            {/*<Route path='/' render={() => <React.Suspense fallback={<div>Loading...</div>}><ProfileContainer/> </React.Suspense>}/>*/}
-                            <Route path='/dialogs' render={() => <React.Suspense fallback={<div>Loading...</div>}> <DialogsContainer/> </React.Suspense>} />
-                            <Route path='/profile/:userId?' render={() => <React.Suspense fallback={<div>Loading...</div>}> <ProfileContainer/> </React.Suspense>}/>
-                            <Route path='/users' render={() => <UsersContainer/>}/>
-                            <Route path='/news' component={News}/>
-                            <Route path='/music' component={Music}/>
-                            <Route path='/settings' component={Settings}/>
-                            <Route path='/login' component={Login}/>
-                            {/*<Route path='*' render={()=> <div>404 NOT FOUND</div>}/>*/}
-                        </div>
-                </div>
+                        <main>
+                            <NavbarAlternative/>
+                            <div className='wrapper'>
+                                {/*<Route path='/' render={() => <React.Suspense fallback={<div>Loading...</div>}><ProfileContainer/> </React.Suspense>}/>*/}
+                                <Route path='/dialogs' render={() => <React.Suspense fallback={<div>Loading...</div>}> <DialogsContainer/> </React.Suspense>} />
 
-            </BrowserRouter>
+                                <Route path='/profile/:userId?' render={() => <React.Suspense fallback={<div>Loading...</div>}> <ProfileContainer/> </React.Suspense>}/>
+                                <Route path='/users' render={() => <UsersContainer/>}/>
+                                <Route path='/news' component={News}/>
+                                <Route path='/music' component={Music}/>
+                                <Route path='/settings' component={Settings}/>
+                                <Route path='/login' component={Login}/>
+                                {/*<Route path='*' render={()=> <div>404 NOT FOUND</div>}/>*/}
+                            </div>
+                        </main>
+                    </div>
+                </BrowserRouter>
+            </>
+
+
         );
     }
 }
@@ -65,20 +86,28 @@ type AppStateLocalType = MapDispatchPropsType & MapStatePropsType
 
 type MapDispatchPropsType = {
     initializeAppTC: () => void
+    toggleBlackTheme: (theme: boolean) => void
+    toggleDynamicBackground: (theme: boolean) => void
 }
 
 type MapStatePropsType = {
     initialized: boolean
+    isBlackThemeActivated: boolean
+    isDynamicBackgroundActivated: boolean
 }
 
 const MapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        initialized: state.app.initialized
+        initialized: state.app.initialized,
+        isBlackThemeActivated: state.settings.isBlackThemeActivated,
+        isDynamicBackgroundActivated: state.settings.isDynamicBackgroundActivated
     }
 }
 
 export default compose<React.ComponentType>(
     withRouter,
     connect(MapStateToProps, {
-        initializeAppTC
+        initializeAppTC,
+        toggleBlackTheme,
+        toggleDynamicBackground
     }))(App)

@@ -3,7 +3,7 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../commons/formControls/FormsControls";
 import {required} from "../utils/validators/validators";
 import classes from "../commons/formControls/FormsControls.module.css"
-import styled from "styled-components";
+import s from "./style.module.css"
 
 
 //типо как MapStateToProps
@@ -22,34 +22,33 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 
     return (
-        <div>
-            <form onSubmit={props.handleSubmit}>
+            <form className={s.login} onSubmit={props.handleSubmit}>
                 Данные тестового аккаунта: <br/>
+
                 Email: free@samuraijs.com <br />
 
                 Password: free
                 <div>
-                    <StyledInput validate={[required]} placeholder={"email"} component={Input} name={"email"}/>
+                    <Field validate={[required]} placeholder={"email"} component={Input} name={"email"}/>
                 </div>
                 <div>
-                    <StyledInput validate={[required]} placeholder={"password"} component={Input} name={"password"}
+                    <Field validate={[required]} placeholder={"password"} component={Input} name={"password"}
                            type={'password'}/>
                 </div>
-                <div>
-                    <Field type={'checkbox'} component={Input} name={"rememberMe"}/> remember me
+                <div style={{display: 'flex'}}>
+                    <Field type={'checkbox'} component={Input} name={"rememberMe"}/> <div style={{marginLeft: 20, marginTop: 10}}>remember me</div>
                 </div>
                 <div>
                     {props.error && <div className={classes.formSummaryError}>{props.error}</div>}
                 </div>
                {/* {props.  && <img src={props.active} />}*/}
                 <div>
-                    <StyledBtn>Login</StyledBtn>
+                    <button className="button button--primary" type="submit">Login</button>
                 </div>
             </form>
-        </div>
     );
 };
-const StyledBtn = styled.button`
+/*const StyledBtn = styled.button`
   height: 30px;
   width: 80px;
   cursor: pointer;
@@ -78,7 +77,7 @@ const StyledInput = styled(Field)`
   border: 1px solid #bdbdbd;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-`
+`*/
 
 export const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'

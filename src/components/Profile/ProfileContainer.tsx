@@ -12,8 +12,7 @@ import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
-import {getCaptchaUrlTC} from "../../redux/auth-reducer";
-import {Profile} from "./Profile";
+import AltProfile from "./profileInfo/alternative/AltProfile";
 
 
 type MapStatePropsType = {
@@ -43,7 +42,9 @@ class ProfileContainerC extends React.Component<PropsType> {
 
 
     refreshProfile = () => {
-        let userId =  /*this.props.authorizedUserId*/ this.props.match.params.userId
+        let userId = this.props.match.params.userId /*this.props.match.params.userId*/
+        let userid2 = this.props.authorizedUserId
+
         if (!userId) {
             return   userId === this.props.authorizedUserId
             if(!userId) {
@@ -60,7 +61,8 @@ class ProfileContainerC extends React.Component<PropsType> {
     }
 
     componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>, snapshot?: any) {
-        if(this.props.match.params.userId != prevProps.match.params.userId) {
+
+        if(this.props.match.params.userId !== prevProps.match.params.userId) {
           return   this.refreshProfile
         }
     }
@@ -70,11 +72,12 @@ class ProfileContainerC extends React.Component<PropsType> {
 
         return (
 
-            <Profile saveProfileTC={this.props.saveProfileTC} savePhoto={this.props.savePhotoTC}
+            <AltProfile /*{...this.props}*/ saveProfileTC={this.props.saveProfileTC} savePhoto={this.props.savePhotoTC}
                 isOwner={!this.props.match.params.userId}
                 userProfile={this.props.userProfile}
                 profileStatus={this.props.profileStatus}
-                updateUserStatusTC={this.props.updateUserStatusTC}/>
+                updateUserStatusTC={this.props.updateUserStatusTC}
+            />
         );
     }
 }

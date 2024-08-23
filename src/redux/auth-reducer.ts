@@ -40,6 +40,7 @@ type ActionType = setUserDataType | getCaptchaUrlSuccessType
 export const authReducer = (state: AuthPropsType = initialState, action: ActionType) => {
     switch (action.type) {
         case 'SET_USER_DATA': {
+            debugger
             return {
                 ...state,
                 ...action.payload,
@@ -99,6 +100,7 @@ export const logoutTC = () => async (dispatch: any) => {
     if (response.resultCode === 1) {
         dispatch(setAuthUserData(null, null, null, false))
     }
+    window.location.reload()
 }
 
 export const getCaptchaUrlTC = () => async (dispatch: any) => {

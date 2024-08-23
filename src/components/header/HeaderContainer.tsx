@@ -3,6 +3,7 @@ import {Header} from "./Header";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {AuthPropsType, getAuthUserTC, logoutTC} from "../../redux/auth-reducer";
+import AlternativeHeader from "./AlternativeHeader";
 
 class HeaderContainer extends React.Component<HeaderPropsType> {
 
@@ -11,7 +12,7 @@ class HeaderContainer extends React.Component<HeaderPropsType> {
     }
 
     render() {
-        return <Header {...this.props}/>
+        return <AlternativeHeader {...this.props}/>
     }
 }
 

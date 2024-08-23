@@ -8,6 +8,7 @@ const instance = axios.create({
     withCredentials: true,
     headers: {"API-KEY": "482cc18a-19a0-4ab1-be65-64dee4acdd40"},
 
+
 })
 
 export const usersAPI = {
@@ -21,7 +22,7 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getProfile(userId: string) {
+    getProfile(userId: number) {
         return instance.get(`profile/${userId}`)
             .then(response => {
                 return  response.data
