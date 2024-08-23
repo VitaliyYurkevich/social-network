@@ -1,0 +1,120 @@
+.loginPage {
+    background-color: var(--wrap-bg-color);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding-top: 32px;
+}
+
+@media screen and (max-width: 678px) {
+    .loginPage {
+        padding: 16px;
+    }
+}
+
+
+.loginWrap {
+    margin: 0 auto;
+    width: 678px;
+    color: var(--b-w-text-color);
+    display: flex;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 678px) {
+    .loginWrap {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+
+h2 {
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 678px) {
+    h4 {
+        text-align: center;
+        margin-top: 16px;
+    }
+}
+
+
+.button {
+    margin-top: 10px;
+}
+
+.name, .surname, .mail, .password {
+    margin-top: 10px;
+}
+
+.passwordField {
+    position: relative;
+}
+
+input {
+    width: 100%;
+}
+
+.showPassword {
+    position: absolute;
+    cursor: pointer;
+    width: 20px;
+    right: 10px;
+    top: 9px;
+}
+
+
+.chooseGender {
+    margin-bottom: 12px;
+}
+
+.title {
+    font-size: 12px;
+}
+
+.radios {
+    display: flex;
+    margin-top: 6px;
+}
+
+.item {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    margin-left: 2px;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+}
+
+.radioButton {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background-color: var(--body-bg-color);
+    border: 1px var(--b-w-text-color) solid;
+    border-radius: 20px;
+}
+
+.active ::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    left: 2px;
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+}
+
+.item:last-child {
+    margin-left: 16px;
+}
+

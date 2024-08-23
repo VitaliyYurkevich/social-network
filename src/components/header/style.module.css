@@ -1,0 +1,186 @@
+.header {
+  background: var(--head-bg-color);
+  padding: 15px 0;
+
+}
+@media screen and (max-width: 1440px) {
+  .header {
+    padding: 8px 0;
+  }
+}
+.headerWrap {
+  max-width: var(--wrap-size);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+@media screen and (max-width: 1440px) {
+  .headerWrap {
+    margin: 0 10px;
+  }
+}
+.mainIcon {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+}
+
+.logo {
+  width: 60px;
+  margin-right: 10px;
+
+}
+@media screen and (max-width: 1440px) {
+ .logo {
+   width: 45px;
+   height: 45px;
+ }
+}
+.title {
+  width: 156px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+
+}
+@media screen and (max-width: 1440px) {
+ .title{
+   display: none;
+ }
+}
+.isAuthUserBlock {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.userLogName {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  color: #ffffff;
+  margin-right: 10px;
+
+}
+@media screen and (max-width: 1440px) {
+  .userLogName {
+    display: none;
+  }
+}
+.userPhoto {
+  width: 48px;
+  border-radius: 24px;
+  border: solid 2px var(--female-color);
+}
+@media screen and (max-width: 1440px) {
+ .userPhoto {
+   width: 45px;
+   height: 45px;
+ }
+}
+
+.malePhoto {
+  border: solid 2px var(--male-color);
+}
+
+.function {
+  display: none;
+  width: 16px;
+  cursor: pointer;
+  margin-left: 5px;
+
+}
+@media screen and (max-width: 1440px) {
+  .function {
+    display: block;
+  }
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  background: #000;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+}
+
+.content {
+  position: absolute;
+  z-index: 300;
+  border-radius: 10px;
+  background-color: var(--body-bg-color);
+  top: 220px;
+  left: calc(50% - 135px);
+  padding: 25px 20px;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.exit {
+  color: red
+}
+
+.button {
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+  border-radius: 19px;
+  background: #bfbfbf;
+  z-index: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 300ms;
+
+}
+
+.button::after {
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 17px;
+  background: #fff;
+  top: 2px;
+  left: 3px;
+  transition-duration: 300ms;
+  position: absolute;
+  z-index: 1;
+}
+
+.switchOn {
+  background: var(--secondary-color);
+}
+
+.switchOn::after {
+  left: 23px;
+}
+
+.label {
+  margin-right: 10px;
+  color: var(--b-w-text-color);
+}
+
+.login {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;
+  color: #ffffff;
+  display: block;
+  margin-top: 16px;
+  transition: .2s ease-in-out;
+}
+
+.login:hover {
+  color: var(--secondary-color);
+}
