@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, withRouter} from "react-router-dom";
 import Settings from "./components/settings/Settings";
 import Music from "./components/music/Music";
 import News from "./components/news/News";
@@ -51,7 +51,7 @@ export class App extends React.Component<AppStateLocalType> {
         return (
             <>
                 {this.props.isDynamicBackgroundActivated && <Particle />}
-                <BrowserRouter>
+                <HashRouter>
                     <div  >
                         <HeaderContainer/>
                         <main>
@@ -70,7 +70,7 @@ export class App extends React.Component<AppStateLocalType> {
                             </div>
                         </main>
                     </div>
-                </BrowserRouter>
+                </HashRouter>
             </>
 
 
