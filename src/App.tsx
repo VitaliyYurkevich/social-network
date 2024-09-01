@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import Settings from "./components/settings/Settings";
 import Music from "./components/music/Music";
 import News from "./components/news/News";
@@ -12,13 +12,10 @@ import {compose} from "redux";
 import {initializeAppTC} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import {LoaderInfinity} from "./components/loader/LoaderInfinity";
-import {Navbar} from "./components/navbar/Navbar";
 import NavbarAlternative from "./components/navbar/NavbarAlternative";
-import {ThemeProvider} from "@mui/material";
 import './styles/index.css'
 import {toggleBlackTheme, toggleDynamicBackground} from "./redux/settings";
-import { Particle} from "./components/commons/backGroundEffect/BackGroundEffect";
-
+import {Particle} from "./components/commons/backGroundEffect/BackGroundEffect";
 
 
 const DialogsContainer = React.lazy(()=> import("./components/dialogs/DialogsContainer"))
@@ -48,7 +45,6 @@ export class App extends React.Component<AppStateLocalType> {
 
     render() {
         if(!this.props.initialized){
-            debugger
             return <LoaderInfinity/>
         }
 

@@ -40,7 +40,7 @@ type ActionType = setUserDataType | getCaptchaUrlSuccessType
 export const authReducer = (state: AuthPropsType = initialState, action: ActionType) => {
     switch (action.type) {
         case 'SET_USER_DATA': {
-            debugger
+
             return {
                 ...state,
                 ...action.payload,
@@ -48,7 +48,7 @@ export const authReducer = (state: AuthPropsType = initialState, action: ActionT
             }
         }
         case "GET_CAPTCHA_URL_SUCCESS": {
-            debugger
+
             return {
                 ...state,
                 captchaUrl: action.url

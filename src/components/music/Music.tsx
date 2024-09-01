@@ -17,16 +17,18 @@ const StyledDiv = styled.div`
   padding: 0;
    border-radius: 20px;
   position: relative;
-  
+  @media (max-width: 678px) {
+    bottom: -300px
+  }
+
 `
 
 const StyledImg = styled.img`
-  width: 600px;
-  height: 600px;
   border-radius: 20px;
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  object-fit: cover;
 `
 export default Music;

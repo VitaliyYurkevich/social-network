@@ -18,19 +18,23 @@ const StyledDiv = styled.div`
   height: 100%;
   margin: 0;
   padding: 0;
-   border-radius: 20px;
+  border-radius: 20px;
   position: relative;
+  //background-color: var(--wrap-bg-color);
+
+  @media (max-width: 678px) {
+    bottom: -300px
+  }
+
 `
 
 const StyledImg = styled.img`
-  
-  width: 600px;
-  height: 600px;
   border-radius: 20px;
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  object-fit: cover;
 `
 
 export default News;

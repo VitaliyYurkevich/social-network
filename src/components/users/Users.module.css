@@ -8,6 +8,7 @@
     background-color: var(--wrap-bg-color);
 }
 
+
 .search {
     height: 160px;
     padding: 30px;
@@ -43,6 +44,13 @@
 
     margin-bottom: 20px;
     gap: 20px;
+}
+
+@media screen and (max-width: 678px) {
+    .users {
+        width: 100%;
+        height: 1550px;
+    }
 }
 
 .user {
@@ -84,6 +92,7 @@
     margin-bottom: 16px;
 }
 
+
 @media screen and (max-width: 900px) {
     .usersBlock {
         margin-top: 5px;
@@ -103,6 +112,10 @@
         padding: 8px 1.5%;
         height: 100px;
         margin-bottom: 5px;
+    }
+
+    .paginator {
+
     }
 
     .photo {

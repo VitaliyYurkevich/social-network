@@ -1,7 +1,5 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
-import classes from "./Paginator.module.css";
-import {Button, Pagination, PaginationItem} from "@mui/material";
-import {usersAPI} from "../../../api/api";
+import React from 'react';
+import {Pagination} from "@mui/material";
 import styled from "styled-components";
 
 type PaginatorPropsType = {
@@ -60,6 +58,10 @@ const StyledPaginator = styled.div`
   background-color: var(--wrap-bg-color);
    padding-left: 30%;
   color: var(--b-w-text-color);
+  @media screen and (max-width: 600px) {
+    margin-top: 90%;
+    
+  }
 `
 
 export default Paginator;

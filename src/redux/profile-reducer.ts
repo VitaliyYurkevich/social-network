@@ -119,7 +119,6 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
                 ...state,
                 posts: [...state.posts, {id: 11, message: action.newText, likeCount: 11}]
             }
-            debugger
             return stateCopy
         }
         case "SET_USER_PROFILE": {

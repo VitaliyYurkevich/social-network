@@ -32,7 +32,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                     )
                 })}
             </div>
-            <div style={{marginTop: 300, marginLeft: 300}}>
+            <div className={classes.input} >
                 <AddMessageReduxForm onSubmit={addNewMessage}/>
             </div>
         </div>

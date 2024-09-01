@@ -78,6 +78,7 @@ const Users = (props: UsersComponentPropsType) => {
 const StyledPaginator = styled(Paginator)`
   padding-top: 50px;
   background-color: black;
+  
 `
 
 export default Users;

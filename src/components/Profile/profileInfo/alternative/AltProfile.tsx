@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RouteComponentProps, useHistory, withRouter } from 'react-router-dom'
-
-
+import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
 import s from './style.module.css'
-import {AppStateType} from "../../../../redux/redux-store";
-import {getProfileTC, saveProfileTC, updateUserStatusTC, UserProfilePropsType} from "../../../../redux/profile-reducer";
+import {saveProfileTC, updateUserStatusTC, UserProfilePropsType} from "../../../../redux/profile-reducer";
 import ProfileEditForm from "./altEditForm/AltEditForm";
 import AlternativeProfileInfo from "./altProfileInfo/AlternativeProfileInfo";
 import AltPosts from "./posts/AltPosts";
-import {getUsersSelector} from "../../../../redux/user-selectors";
 
 type PropsType = {
     userProfile: UserProfilePropsType

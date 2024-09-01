@@ -1,95 +1,114 @@
 .profile {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .infoBlock {
-  margin-bottom: 20px;
-  display: flex;
-  height: 300px;
-  /*@media screen and (max-width: 678px) {
-    flex-direction: column;
-    height: auto;
-    margin-bottom: 5px;
-  }*/
+    margin-bottom: 20px;
+    display: flex;
+    height: 300px;
+
+}
+
+@media screen and (max-width: 678px) {
+    .infoBlock {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
 }
 
 .mainInfo {
-  width: 28%;
-  border-radius: 10px;
-  padding: 40px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(to top, var(--wrap-bg-color) 73%, var(--color-block) 27%);
-  /*@media screen and (max-width: 678px) {
-    width: 100%;
-    padding: 18px;
-  }*/
+    width: 28%;
+    border-radius: 10px;
+    padding: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to top, var(--wrap-bg-color) 73%, var(--color-block) 27%);
+
 }
-  /*.colorBlock {
-    position: absolute;
-    height: 27%;
-    width: 100%;
-    background-color: rgba(255, 0, 0, 0);
-    cursor: pointer;
 
-    z-index: 1;
-    left: 0;
-    top: 0;
-    border-radius: 10px 10px 0 0;
-    -webkit-tap-highlight-color: transparent;
-  }*/
+@media screen and (max-width: 678px) {
+    .mainInfo {
+        width: 100%;
+        padding: 18px;
+    }
+}
 
-  .chooserColor {
+/*.colorBlock {
+  position: absolute;
+  height: 27%;
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0);
+  cursor: pointer;
+
+  z-index: 1;
+  left: 0;
+  top: 0;
+  border-radius: 10px 10px 0 0;
+  -webkit-tap-highlight-color: transparent;
+}*/
+
+.chooserColor {
     height: 100px;
     width: 100px;
     position: absolute;
     top: 50px;
     left: 150px;
     z-index: 3;
-    /*@media screen and (max-width: 678px) {
-      left: 100px;
-    }*/
-  }
 
-  .mainPhoto {
+}
+
+@media screen and (max-width: 678px) {
+    .chooserColor {
+        left: 100px;
+    }
+
+}
+
+.mainPhoto {
     border-radius: 40px;
     width: 80px;
     height: 80px;
     border: var(--female-color) 2px solid;
     background-color: white;
     z-index: 2;
-  }
+}
 
-  .malePhoto {
+.malePhoto {
     border: var(--male-color) 2px solid;
-  }
+}
 
-  .mainInfo input {
+.mainInfo input {
     display: none;
-  }
+}
 
-  .name {
+.name {
     margin-top: 10px;
     color: var(--b-w-text-color);
     font-size: 20px;
     font-weight: 600;
-  }
+}
 
-  .status {
+.status {
     margin-top: 10px;
     font-size: 14px;
     color: var(--dark-blue-w-text-color);
     overflow: hidden;
     height: calc(100% - 150px);
-    /*@media screen and (max-width: 678px) {
-      margin-bottom: 8px;
-    }*/
-  }
 
-  .statusEdit input {
+}
+
+@media screen and (max-width: 678px) {
+    .status {
+        margin-bottom: 8px;
+    }
+}
+
+.statusEdit input {
     display: block;
     border: 1px #d8d6dc solid;
     width: 100%;
@@ -97,101 +116,106 @@
     font-size: 16px;
     cursor: pointer;
     color: var(--gray-w-text-color);
-  }
+}
 
 
 .modal {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-  .overlayModal {
+
+.overlayModal {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 999;
     background: #000;
     opacity: 0.7;
-  }
+}
 
-  .modalPhoto {
+.modalPhoto {
     position: absolute;
     max-width: 40%;
     border: 2px var(--b-w-text-color) solid;
     border-radius: 8px;
     z-index: 1000;
-  }
+}
 
 
 .description {
-  width: calc(72% - 20px);
-  margin-left: 20px;
-  border-radius: 10px;
-  background-color: var(--wrap-bg-color);
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
+    width: calc(72% - 20px);
+    margin-left: 20px;
+    border-radius: 10px;
+    background-color: var(--wrap-bg-color);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
-  /*@media screen and (max-width: 678px) {
+
+@media screen and (max-width: 678px) {
+  .description {
     width: 100%;
     margin-left: 0;
     margin-top: 5px;
     padding: 18px;
-  }*/
-
-  .aboutMe, .skills {
-    height: 82px;
   }
+}
 
-  p {
+.aboutMe, .skills {
+    height: 82px;
+}
+
+p {
     font-size: 12px;
     font-weight: bold;
     color: var(--secondary-color);
-  }
+}
 
-  span {
+span {
     font-size: 14px;
     color: var(--dark-blue-w-text-color);
-  }
+}
 
-  .contactsList {
+.contactsList {
     display: flex;
     flex-wrap: wrap;
     max-width: 600px;
-  }
+}
 
-  .contacts a {
+.contacts a {
     display: flex;
     width: 160px;
     margin: 8px 20px 6px 0;
     align-items: center;
-  }
-    img {
-      margin-right: 5px;
-    }
+}
 
-    p {
-      color: var(--gray-w-text-color);
-      font-size: 8px;
-      font-weight: normal;
+img {
+    margin-right: 5px;
+}
 
-      /*&:hover {
-        color: var(--secondary-color);
-      }*/
-    }
+p {
+    color: var(--gray-w-text-color);
+    font-size: 8px;
+    font-weight: normal;
+
+    /*&:hover {
+      color: var(--secondary-color);
+    }*/
+}
 
 
-  .gitHubIcon {
+.gitHubIcon {
     border-radius: 5px;
-  }
+}
 
-  .vkIcon {
+.vkIcon {
     border-radius: 5px;
-  }
+}
 
